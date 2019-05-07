@@ -33,6 +33,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="sm5KwATnlWANhXsfXAyKVMU6Ru0AWEeo" />
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote"/>
+
         <activity android:name=".Activity.FindPeople.FindPeopleDetail"></activity>
         <activity android:name=".Activity.RegisterActivity" />
         <activity
