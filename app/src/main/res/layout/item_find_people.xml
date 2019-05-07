@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="170dp">
+
+        <ImageView
+            android:id="@+id/item_find_people_img"
+            android:layout_width="130dp"
+            android:layout_height="150dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/head_icon"
+            android:scaleType="fitXY"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="15dp">
+
+            <TextView
+                android:id="@+id/item_find_people_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="寻人启示"
+                android:textSize="25dp"
+                android:maxLines="1"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/item_find_people_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="6"
+                android:text="@string/title_mine"
+                android:textColor="@color/light_black"
+                android:ellipsize="end"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/item_find_people_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2018-09-11 20:87"
+                android:gravity="end"
+                android:textColor="@color/light_black"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/line_gray"/>
+
+</LinearLayout>

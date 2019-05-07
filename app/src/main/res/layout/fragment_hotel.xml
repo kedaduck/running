@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/hotel_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <TextView
+        android:id="@+id/hotel_error_text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="该地区没有景点信息"
+        android:textSize="28sp"
+        android:gravity="center_horizontal|center_vertical"
+        android:visibility="gone"/>
+
+</LinearLayout>

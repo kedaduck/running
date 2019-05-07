@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="blue">#0000ff</color>
+    <color name="gray">#969696</color>
+    <color name="red">#ff0000</color>
+    <color name="orange">#E98F36</color>
+    <color name="dark_gray">#cccc</color>
+    <color name="line_gray">#CCE4D0D0</color>
+    <color name="light_black">#CC2E1C1C</color>
+    <color name="light_black_01">#CC574A4A</color>
+    <color name="light_black_02">#CC251212</color>
+    <color name="light_gray">#EDEDF0</color>
+    <color name="gray_bg">#DAF3EB</color>
+    <color name="back_btn_back">#808A7979</color>
+
+    <!-- ====================主页面颜色========================= -->
+    <color name="friend_page">#3da6fe</color>
+    <color name="play_page">#fec900</color>
+    <color name="live_page">#ffa200</color>
+    <color name="mine_page">#00ECDFDF</color>
+    <color name="share_page">#BEB40B</color>
+
+    <!-- ====================live 颜色================================= -->
+    <color name="video_text">#8a8a8a</color>
+    <color name="live_tab_back">#A89CEBD3</color>
+    <color name="transparent">#00000000</color>
+
+    <!-- ======================friend  color==========================================-->
+    <color name="unread_button_dot_back">#0991DB</color>
+
+
+
+    <color name="uvv_gray">#969696</color>
+    <color name="uvv_black">#ff000000</color>
+    <color name="uvv_light_gray">#ffF0F0F0</color>
+    <color name="uvv_titlebar_bg">#7f000000</color>
+
+
+
+</resources>

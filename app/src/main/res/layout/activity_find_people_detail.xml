@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.FindPeople.FindPeopleDetail">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/find_people_detail_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:navigationIcon="@drawable/back_icon"
+        app:title="@string/publish_find_people"/>
+
+    <RadioGroup
+        android:id="@+id/select_class_group"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp">
+
+        <RadioButton
+            android:id="@+id/radio_find_children"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/find_children"
+            android:textSize="18sp"/>
+
+        <RadioButton
+            android:id="@+id/radio_find_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/find_parent"
+            android:layout_marginStart="50dp"/>
+
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/publish_find_people_edit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="@string/write_title"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"/>
+
+    <EditText
+        android:id="@+id/publish_find_people_detail_edit"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:hint="@string/write_detail_info"
+        android:gravity="start"
+        android:layout_margin="15dp"
+        android:padding="10dp"
+        android:maxLines="10"
+        android:background="@drawable/find_people_detail_back"/>
+
+    <Button
+        android:id="@+id/publish_find_people_select_photo_btn"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="@string/select_photo"
+        android:background="@drawable/select_photo_btn_back"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_marginStart="15dp"/>
+
+    <ImageView
+        android:id="@+id/find_people_img"
+        android:layout_width="150dp"
+        android:layout_height="170dp"
+        android:src="@drawable/head_icon"
+        android:layout_margin="15dp"
+        android:scaleType="fitXY"/>
+
+
+    <Button
+        android:id="@+id/publish_find_people_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/publish"
+        android:background="@drawable/select_photo_btn_back"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:textSize="20sp"
+        android:textColor="@color/white"/>
+
+
+
+</LinearLayout>

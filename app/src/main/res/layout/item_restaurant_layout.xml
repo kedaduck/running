@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <ImageView
+            android:id="@+id/item_restaurant_img"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_margin="15dp"
+            android:src="@drawable/head_icon"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="20dp">
+
+            <TextView
+                android:id="@+id/item_restaurant_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="黄山烧饼"
+                android:textColor="@color/black"
+                android:textSize="25sp"/>
+
+            <TextView
+                android:id="@+id/item_restaurant_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="5"
+                android:ellipsize="end"
+                android:textSize="15sp"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/light_black"
+                android:text="ashocnsocnsdcbsjdibcisubdcisbdcibsdjcisdcjbsdcbsdibcsd"/>
+
+            <TextView
+                android:id="@+id/item_restaurant_price_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="25.4"
+                android:textSize="29sp"
+                android:textColor="@color/red"
+                android:layout_gravity="bottom"
+                android:gravity="end"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_gray"/>
+
+</LinearLayout>

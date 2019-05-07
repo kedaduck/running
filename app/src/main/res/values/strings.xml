@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Running</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_scenic">景点</string>
+    <string name="title_find_people">公告</string>
+    <string name="publish_find_people">发布寻人启示</string>
+    <string name="title_location">位置</string>
+    <string name="title_mine">我的</string>
+    <string name="tab_attraction">景点</string>
+    <string name="tab_hotel">酒店</string>
+    <string name="tab_restaurant">餐厅</string>
+    <string name="tab_good">纪念品</string>
+    <string name="find_children">我要找小孩</string>
+    <string name="find_parent">我要找家长</string>
+    <string name="write_title">写一个标题吧</string>
+    <string name="write_detail_info">请写出详细信息</string>
+    <string name="select_photo">选择照片</string>
+    <string name="publish">发布</string>
+</resources>

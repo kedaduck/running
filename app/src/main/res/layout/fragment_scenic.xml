@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/gray_bg">
+
+        <TextView
+            android:id="@+id/tab_attraction_text"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="@string/tab_attraction"
+            android:textSize="20sp"
+            android:textColor="@color/light_black"
+            android:gravity="center_vertical|center_horizontal"/>
+
+        <TextView
+            android:id="@+id/tab_hotel_text"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:textColor="@color/light_black"
+            android:layout_height="match_parent"
+            android:text="@string/tab_hotel"
+            android:textSize="20sp"
+            android:gravity="center_vertical|center_horizontal"/>
+
+        <TextView
+            android:id="@+id/tab_restaurant_text"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="@string/tab_restaurant"
+            android:textSize="20sp"
+            android:textColor="@color/light_black"
+            android:gravity="center_vertical|center_horizontal"/>
+
+        <TextView
+            android:id="@+id/tab_good_text"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="@string/tab_good"
+            android:textSize="20sp"
+            android:textColor="@color/light_black"
+            android:gravity="center_vertical|center_horizontal"/>
+
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/scenic_content_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v4.view.ViewPager>
+
+</LinearLayout>
