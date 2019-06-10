@@ -7,6 +7,7 @@
     <string name="title_find_people">公告</string>
     <string name="publish_find_people">发布寻人启示</string>
     <string name="title_location">位置</string>
+    <string name="this_title_location">当前位置:</string>
     <string name="title_mine">我的</string>
     <string name="tab_attraction">景点</string>
     <string name="tab_hotel">酒店</string>
@@ -18,4 +19,23 @@
     <string name="write_detail_info">请写出详细信息</string>
     <string name="select_photo">选择照片</string>
     <string name="publish">发布</string>
+
+    <!-- ================个人界面 =======================    -->
+    <string name="user_tele">手机号</string>
+    <string name="change_password">更改密码</string>
+    <string name="user_idcard">身份证</string>
+    <string name="user_sex">性  别</string>
+    <string name="user_record">我的订单</string>
+    <string name="user_setting">设置</string>
+    <string name="user_logout">退出登录</string>
+    <string name="record_no">订单号:</string>
+    <string name="record_genrate_time">订单时间:</string>
+    <string name="record_room_id">订单房间号:</string>
+    <string name="record_all_price">订单总额:</string>
+    <string name="check_in_time1">入住时间:</string>
+    <string name="check_out_time1">退房时间:</string>
+    <string name="all_days">入住天数:</string>
+    <string name="no_record_info">没有订单信息哦！！</string>
+    <string name="have_find">找到</string>
+
 </resources>

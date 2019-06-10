@@ -3,6 +3,7 @@ package com.ding.running.Activity.Fragment;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -29,8 +30,11 @@ import com.baidu.mapapi.search.geocode.ReverseGeoCodeOption;
 import com.ding.running.MyViews.ToastUtil;
 import com.ding.running.R;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * @ClassName LocationFragment
@@ -39,7 +43,7 @@ import java.util.List;
  * Description :
  * @Version v1.0
  */
-public class LocationFragment extends Fragment {
+public class LocationFragment extends Fragment implements View.OnClickListener {
 
     private MapView playItemMapView;  // mapview
     private BaiduMap baiduMap;    //baiduMap 用来管理mapview
@@ -51,6 +55,8 @@ public class LocationFragment extends Fragment {
 
     private boolean isFirstLocate = true;
 
+    private TextToSpeech tts;
+
     private View rootView;
 
 
@@ -61,16 +67,26 @@ public class LocationFragment extends Fragment {
         requestPermission();
         playItemMapView = rootView.findViewById(R.id.my_location_map);
         positionText = rootView.findViewById(R.id.position_text);
+        positionText.setOnClickListener(this);
         baiduMap = playItemMapView.getMap();
         baiduMap.setMyLocationEnabled(true);
         locationClient = new LocationClient(getActivity());
         locationClient.registerLocationListener(myLocationListener);
         option = new LocationClientOption();
         option.setOpenGps(true);
+        option.setIsNeedAddress(true);
         option.setCoorType("bd09ll");
         option.setScanSpan(1000);
         locationClient.setLocOption(option);
         locationClient.start();
+        tts = new TextToSpeech(getContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status == tts.SUCCESS) {
+                    int result = tts.setLanguage(Locale.ENGLISH);
+                }
+            }
+        });
         return rootView;
     }
 
@@ -154,6 +170,7 @@ public class LocationFragment extends Fragment {
     }
 
 
+
     public class MyLocationListener extends BDAbstractLocationListener {
         @Override
         public void onReceiveLocation(BDLocation location) {
@@ -190,5 +207,25 @@ public class LocationFragment extends Fragment {
 
             }
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.position_text:
+                playPositionData();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void playPositionData(){
+        Log.e("Login", positionText.getText().toString());
+        String locationStr = positionText.getText().toString();
+        if(StringUtils.isBlank(locationStr)){
+            positionText.setText("中国山西省太原市尖草坪区行知西路");
+        }
+        tts.speak("您当前的位置是 " + positionText.getText().toString(), TextToSpeech.QUEUE_ADD, null);
     }
 }

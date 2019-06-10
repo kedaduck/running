@@ -20,26 +20,15 @@ public class FindPeopleVo implements Serializable {
 
     private String picture;
 
-    private Date publishTime;
+    private String publishTime;
 
-    private Date endTime;
+    private String endTime;
 
-    private Integer state;
+    private String state;
 
     private Long userId;
 
     public FindPeopleVo() {
-    }
-
-    public FindPeopleVo(Long id, String title, String text, String picture, Date publishTime, Date endTime, Integer state, Long userId) {
-        this.id = id;
-        this.title = title;
-        this.text = text;
-        this.picture = picture;
-        this.publishTime = publishTime;
-        this.endTime = endTime;
-        this.state = state;
-        this.userId = userId;
     }
 
     @Override
@@ -49,11 +38,22 @@ public class FindPeopleVo implements Serializable {
                 ", title='" + title + '\'' +
                 ", text='" + text + '\'' +
                 ", picture='" + picture + '\'' +
-                ", publishTime=" + publishTime +
-                ", endTime=" + endTime +
+                ", publishTime='" + publishTime + '\'' +
+                ", endTime='" + endTime + '\'' +
                 ", state=" + state +
                 ", userId=" + userId +
                 '}';
+    }
+
+    public FindPeopleVo(Long id, String title, String text, String picture, String publishTime, String endTime, String state, Long userId) {
+        this.id = id;
+        this.title = title;
+        this.text = text;
+        this.picture = picture;
+        this.publishTime = publishTime;
+        this.endTime = endTime;
+        this.state = state;
+        this.userId = userId;
     }
 
     public Long getId() {
@@ -88,27 +88,27 @@ public class FindPeopleVo implements Serializable {
         this.picture = picture;
     }
 
-    public Date getPublishTime() {
+    public String getPublishTime() {
         return publishTime;
     }
 
-    public void setPublishTime(Date publishTime) {
+    public void setPublishTime(String publishTime) {
         this.publishTime = publishTime;
     }
 
-    public Date getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 
-    public Integer getState() {
+    public String getState() {
         return state;
     }
 
-    public void setState(Integer state) {
+    public void setState(String state) {
         this.state = state;
     }
 

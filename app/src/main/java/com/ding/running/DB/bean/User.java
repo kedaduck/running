@@ -13,6 +13,8 @@ public class User extends LitePalSupport {
 
     private Integer id;
 
+    private Integer tagId;
+
     private String username;
 
     private String password;
@@ -24,6 +26,31 @@ public class User extends LitePalSupport {
         this.id = id;
         this.username = username;
         this.password = password;
+    }
+
+    public User(Integer id, Integer tagId, String username, String password) {
+        this.id = id;
+        this.tagId = tagId;
+        this.username = username;
+        this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", tagId=" + tagId +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
+
+    public Integer getTagId() {
+        return tagId;
+    }
+
+    public void setTagId(Integer tagId) {
+        this.tagId = tagId;
     }
 
     public Integer getId() {

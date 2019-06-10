@@ -27,7 +27,7 @@ public class AttractionHolder extends RecyclerView.ViewHolder {
     public AttractionHolder(@NonNull View itemView) {
         super(itemView);
         itemAttractionView = (LinearLayout) itemView;
-        attractionDetailText = itemView.findViewById(R.id.item_attraction_title);
+        attractionDetailText = itemView.findViewById(R.id.item_attraction_text);
         attractionImg = itemView.findViewById(R.id.item_attraction_img);
         attractionNameText = itemView.findViewById(R.id.item_attraction_title);
     }

@@ -2,6 +2,8 @@ package com.ding.running.Activity.scenic.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
+import android.speech.tts.TextToSpeech;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,6 +17,7 @@ import com.ding.running.R;
 import com.ding.running.vo.AttractionVo;
 
 import java.util.List;
+import java.util.Locale;
 
 /**
  * @ClassName AttractionAdapter
@@ -27,10 +30,23 @@ public class AttractionAdapter extends RecyclerView.Adapter<AttractionHolder> {
 
     private List<AttractionVo> attractionVoList;
     private Context context;
+    private TextToSpeech tts;
 
     public AttractionAdapter(List<AttractionVo> attractionVoList, Context context) {
         this.attractionVoList = attractionVoList;
         this.context = context;
+        tts = new TextToSpeech(context, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status == tts.SUCCESS) {
+                    int result = tts.setLanguage(Locale.ENGLISH);
+                    if(result < 0) {
+                        tts.setLanguage(Locale.CHINA);
+                    }
+
+                }
+            }
+        });
     }
 
     @NonNull
@@ -46,10 +62,17 @@ public class AttractionAdapter extends RecyclerView.Adapter<AttractionHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull AttractionHolder holder, int i) {
-        AttractionVo vo = attractionVoList.get(i);
+        final AttractionVo vo = attractionVoList.get(i);
         Glide.with(context).load(vo.getPicture()).into(holder.attractionImg);
         holder.attractionNameText.setText(vo.getAttractioname());
         holder.attractionDetailText.setText(vo.getText());
+        holder.itemAttractionView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tts.speak("当前所在景点" + vo.getAttractioname()+ "所在地址" + vo.getText(),
+                        TextToSpeech.QUEUE_ADD, null);
+            }
+        });
     }
 
     @Override

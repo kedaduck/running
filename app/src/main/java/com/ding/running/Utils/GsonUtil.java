@@ -1,5 +1,7 @@
 package com.ding.running.Utils;
 
+import android.util.Log;
+
 import com.ding.running.Common.ServerResponse;
 import com.ding.running.DB.bean.User;
 import com.ding.running.vo.AttractionVo;
@@ -39,6 +41,21 @@ public class GsonUtil {
         return  response;
     }
 
+    public static  GoodVo formatJsonToGoodVo(String jsonData){
+        GoodVo vo = gson.fromJson(jsonData, new TypeToken<GoodVo>(){}.getType());
+        return vo;
+    }
+
+    public static  HotelVo formatJsonToHotelVo(String jsonData){
+        HotelVo vo = gson.fromJson(jsonData, new TypeToken<HotelVo>(){}.getType());
+        return vo;
+    }
+
+    public static  RestaurantVo formatJsonToRestaurantVo(String jsonData){
+        RestaurantVo vo = gson.fromJson(jsonData, new TypeToken<RestaurantVo>(){}.getType());
+        return vo;
+    }
+
     public static ServerResponse<User> formatJsonToResponseUser(String jsonData){
         ServerResponse<User> response = null;
         try {
@@ -67,6 +84,7 @@ public class GsonUtil {
             int status = obj.optInt("status");
             String msg = obj.optString("msg");
             String dataJsonStr = obj.optString("data");
+            Log.e("FIND", dataJsonStr);
             List<FindPeopleVo> seasonTripVoList = gson.fromJson(dataJsonStr, new TypeToken<List<FindPeopleVo>>(){}.getType());
             response = new ServerResponse<List<FindPeopleVo>>(status, msg, seasonTripVoList);
         } catch (JSONException e) {
@@ -129,7 +147,7 @@ public class GsonUtil {
             int status = obj.optInt("status");
             String msg = obj.optString("msg");
             String dataJsonStr = obj.optString("data");
-            List<RestaurantVo> seasonTripVoList = gson.fromJson(dataJsonStr, new TypeToken<List<HotelVo>>(){}.getType());
+            List<RestaurantVo> seasonTripVoList = gson.fromJson(dataJsonStr, new TypeToken<List<RestaurantVo>>(){}.getType());
             response = new ServerResponse(status, msg, seasonTripVoList);
         } catch (JSONException e) {
             e.printStackTrace();

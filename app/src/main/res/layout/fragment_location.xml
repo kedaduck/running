@@ -14,9 +14,18 @@
         android:clickable="true"/>
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:text="@string/this_title_location"/>
+
+    <TextView
         android:id="@+id/position_text"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        />
+        android:textSize="20sp"
+        android:textColor="@color/red"
+        android:gravity="center_horizontal|center_vertical"/>
 
 </LinearLayout>

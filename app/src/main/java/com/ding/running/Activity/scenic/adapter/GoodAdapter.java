@@ -1,6 +1,7 @@
 package com.ding.running.Activity.scenic.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,8 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
+import com.ding.running.Activity.scenic.GoodDetailActivity;
+import com.ding.running.Activity.scenic.GoodShowActivity;
 import com.ding.running.Activity.scenic.adapter.holder.GoodHolder;
 import com.ding.running.R;
+import com.ding.running.Utils.GsonUtil;
 import com.ding.running.vo.GoodVo;
 
 import java.util.List;
@@ -44,16 +48,24 @@ public class GoodAdapter extends RecyclerView.Adapter<GoodHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull GoodHolder holder, int i) {
-        GoodVo vo = goodVoList.get(i);
+        final GoodVo vo = goodVoList.get(i);
         Glide.with(context).load(vo.getPicture()).into(holder.goodImg);
         holder.goodTitleText.setText(vo.getName());
         holder.goodDetailText.setText(vo.getText());
         holder.storeNameText.setText(vo.getStorename());
         holder.priceText.setText("¥" + vo.getPrice());
+        holder.itemGoodView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, GoodShowActivity.class);
+                intent.putExtra("content", GsonUtil.formatBeanToJSON(vo));
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return goodVoList.size();
     }
 }

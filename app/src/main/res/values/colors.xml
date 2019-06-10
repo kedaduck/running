@@ -17,6 +17,7 @@
     <color name="light_gray">#EDEDF0</color>
     <color name="gray_bg">#DAF3EB</color>
     <color name="back_btn_back">#808A7979</color>
+    <color name="blue_text">#0c91f7</color>
 
     <!-- ====================主页面颜色========================= -->
     <color name="friend_page">#3da6fe</color>

@@ -1,6 +1,8 @@
 package com.ding.running.Activity.FindPeople;
 
 import android.Manifest;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -190,7 +192,7 @@ public class FindPeopleDetail extends AppCompatActivity implements View.OnClickL
         if(!regexContent(titleStr, detailStr)){
             return;
         }
-        ProgressDialogUtil.showProgressDialog1(this, "正在上传");
+        showProgressDialog1(this, "正在上传");
         File file = new File(photoFilePath);
         String url = UrlContent.CREATE_FINDING_PUBLISH;
         RequestBody fileBody = RequestBody.create(MediaType.parse("application/octet-stream"), file);
@@ -205,10 +207,10 @@ public class FindPeopleDetail extends AppCompatActivity implements View.OnClickL
         CommonOkHttpClient.uploadFile1(file, requestBody, url, new DisposeDataHandle(new DisposeDataListener() {
             @Override
             public void onSuccess(String responseStr) {
-                ProgressDialogUtil.closeProgressDialog();
+                closeProgressDialog();
                 ServerResponse response = GsonUtil.formatJsonToResponse(responseStr);
                 if(response.isSuccess()){
-                    ToastUtil.MakeToast("");
+                    ToastUtil.MakeToast("成功发送");
                     FindPeopleDetail.this.finish();
                 }
 
@@ -216,9 +218,8 @@ public class FindPeopleDetail extends AppCompatActivity implements View.OnClickL
 
             @Override
             public void onFailure(OkHttpException e) {
-                ProgressDialogUtil.closeProgressDialog();
-                ToastUtil.MakeToast(e.getMsg() + "");
-
+                closeProgressDialog();
+                ToastUtil.MakeToast(e.getMsg() + "====================");
             }
         }));
 
@@ -247,6 +248,32 @@ public class FindPeopleDetail extends AppCompatActivity implements View.OnClickL
             }else if(checkedId == parentBtn.getId()){
                 findClass = 2;
             }
+        }
+    }
+
+    private ProgressDialog progressDialog;
+
+    public void showProgressDialog(Context context){
+        if(progressDialog == null){
+            progressDialog = new ProgressDialog(context);
+            progressDialog.setMessage("正在加载...");
+            progressDialog.setCanceledOnTouchOutside(false);
+        }
+        progressDialog.show();
+    }
+
+    public void showProgressDialog1(Context context, String msg){
+        if(progressDialog == null){
+            progressDialog = new ProgressDialog(context);
+            progressDialog.setMessage(msg);
+            progressDialog.setCanceledOnTouchOutside(false);
+        }
+        progressDialog.show();
+    }
+
+    public  void closeProgressDialog(){
+        if(progressDialog != null){
+            progressDialog.dismiss();
         }
     }
 }

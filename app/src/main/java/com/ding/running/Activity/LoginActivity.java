@@ -15,6 +15,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,6 +34,8 @@ import com.ding.running.Utils.OkHttp.exception.OkHttpException;
 import com.ding.running.Utils.OkHttp.listener.DisposeDataHandle;
 import com.ding.running.Utils.OkHttp.listener.DisposeDataListener;
 import com.ding.running.Utils.OkHttp.request.CommonRequest;
+
+import org.litepal.LitePal;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -227,7 +230,10 @@ public class LoginActivity extends AppCompatActivity {
                     User user = response.getData();
                     //todo  把该user 加入到本地数据库中
                     user.setPassword(password);
-//                    user.save();
+                    user.setTagId(user.getId());
+                    user.save();
+                    User user1 = LitePal.findFirst(User.class);
+                    Log.e("Find", user1.toString());
                     startMainPage();
                 }
                 ToastUtil.MakeToast(response.getMsg());

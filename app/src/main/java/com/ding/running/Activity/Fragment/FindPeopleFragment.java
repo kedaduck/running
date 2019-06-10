@@ -10,6 +10,7 @@ import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -78,6 +79,7 @@ public class FindPeopleFragment extends Fragment {
         CommonOkHttpClient.post(request, new DisposeDataHandle(new DisposeDataListener() {
             @Override
             public void onSuccess(final String responseStr) {
+                Log.e("Find", responseStr);
                 ProgressDialogUtil.closeProgressDialog();
                 ServerResponse<List<FindPeopleVo>> response = GsonUtil.formatJsonToFindPeopleList(responseStr);
                 if(response == null){
@@ -86,6 +88,7 @@ public class FindPeopleFragment extends Fragment {
                 }
                 if (response.isSuccess()) {
                     findPeopleVoList = response.getData();
+                    initListView();
                 }
             }
 
@@ -96,6 +99,14 @@ public class FindPeopleFragment extends Fragment {
 
             }
         }));
+    }
+
+    private void initListView(){
+        LinearLayoutManager manager = new LinearLayoutManager(getActivity());
+        adapter = new FindPeopleAdapter(findPeopleVoList, getContext());
+        findPeopleListView.setAdapter(adapter);
+        findPeopleListView.setLayoutManager(manager);
+        adapter.notifyDataSetChanged();
     }
 
     private void initViews(){
@@ -142,4 +153,9 @@ public class FindPeopleFragment extends Fragment {
     }
 
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        requestFindPeopleData();
+    }
 }

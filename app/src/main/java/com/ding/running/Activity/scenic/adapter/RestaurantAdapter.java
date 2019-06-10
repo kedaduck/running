@@ -1,6 +1,7 @@
 package com.ding.running.Activity.scenic.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,8 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
+import com.ding.running.Activity.scenic.RestaurantActivity;
 import com.ding.running.Activity.scenic.adapter.holder.RestaurantHolder;
 import com.ding.running.R;
+import com.ding.running.Utils.GsonUtil;
 import com.ding.running.vo.RestaurantVo;
 
 import java.util.List;
@@ -43,12 +46,21 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RestaurantHolder holder, int i) {
-        RestaurantVo vo = restaurantVoList.get(i);
+    public void onBindViewHolder(@NonNull RestaurantHolder holder, final int i) {
+        final RestaurantVo vo = restaurantVoList.get(i);
         Glide.with(context).load(vo.getPicture()).into(holder.restaurantImg);
         holder.restaurantNameText.setText(vo.getName());
         holder.restaurantDetailText.setText(vo.getText());
         holder.restaurantPriceText.setText("¥" + vo.getPrice());
+
+        holder.itemRestaurantView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, RestaurantActivity.class);
+                intent.putExtra("content", GsonUtil.formatBeanToJSON(vo));
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

@@ -1,8 +1,6 @@
-package com.ding.running.Activity.Fragment.adapter;
+package com.ding.running.Activity.scenic.adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,11 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
-import com.ding.running.Activity.FindPeople.FindPeopleDetail;
+import com.ding.running.Activity.scenic.adapter.holder.AttractionHolder;
+import com.ding.running.Activity.scenic.adapter.holder.FindPeopleHolder;
 import com.ding.running.Application.MyApplication;
-import com.ding.running.Common.Const;
 import com.ding.running.R;
 import com.ding.running.Utils.DateParseUtil;
+import com.ding.running.vo.AttractionVo;
 import com.ding.running.vo.FindPeopleVo;
 
 import java.util.List;
@@ -22,7 +21,7 @@ import java.util.List;
 /**
  * @ClassName FindPeopleAdapter
  * @Author Leoren
- * @Date 2019/5/6 10:21
+ * @Date 2019/5/19 11:22
  * Description :
  * @Version v1.0
  */
@@ -48,25 +47,16 @@ public class FindPeopleAdapter extends RecyclerView.Adapter<FindPeopleHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FindPeopleHolder holder, int position) {
-        final FindPeopleVo vo = findPeopleVoList.get(position);
-        Glide.with(context).load(vo.getPicture()).into(holder.headImg);
-        holder.titleText.setText(vo.getTitle());
-        holder.detailText.setText(vo.getText());
-        holder.timeText.setText(vo.getPublishTime());
-        holder.findBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_DIAL);
-                Uri data = Uri.parse("tel:" + "15828025206");
-                intent.setData(data);
-                context.startActivity(intent);
-            }
-        });
+    public void onBindViewHolder(@NonNull FindPeopleHolder holder, int i) {
+        FindPeopleVo vo = findPeopleVoList.get(i);
+        Glide.with(context).load(vo.getPicture()).into(holder.img);
+        holder.title.setText(vo.getTitle());
+        holder.detail.setText(vo.getText());
+        holder.time.setText(vo.getEndTime());
     }
 
     @Override
     public int getItemCount() {
-        return findPeopleVoList.size();
+        return 0;
     }
 }

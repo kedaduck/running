@@ -3,6 +3,85 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/line_gray">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@drawable/divide_line_shape"/>
+
+    <RelativeLayout
+        android:id="@+id/user_fix_img_name_view"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/user_name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:text="丁丁"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/black"
+            android:layout_centerVertical="true"/>
+
+
+        <ImageView
+            android:id="@+id/fix_head_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/jiantou_right"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/user_fix_password_view"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:layout_marginTop="15sp">
+
+        <TextView
+            android:id="@+id/change_password_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/change_password"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_margin="10dp"/>
+
+        <ImageView
+            android:id="@+id/fix_tele_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/jiantou_right"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"/>
+
+    </RelativeLayout>
+
+
+
+    <Button
+        android:id="@+id/user_logout_btn"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/blue_text"
+        android:text="@string/user_logout"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"/>
+
+
 
 </LinearLayout>

@@ -1,5 +1,6 @@
 package com.ding.running.Activity.scenic;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -9,7 +10,9 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -41,6 +44,8 @@ import java.util.List;
 
 import okhttp3.Request;
 
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+import static android.support.constraint.Constraints.TAG;
 import static com.ding.running.MyViews.ProgressDialogUtil.closeProgressDialog;
 
 /**
@@ -74,42 +79,31 @@ public class RestaurantFragment extends Fragment {
 
             final iBeaconClass.iBeacon ibeacon = iBeaconClass.fromScanData(device, rssi, scanRecord);
             getAttractionType(ibeacon);
+            mBluetoothAdapter.stopLeScan(mLeScanCallback);
             initData();
-            Log.e(TAG, type + "type ============== ");
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        mBluetoothAdapter.stopLeScan(mLeScanCallback);
-                        Thread.sleep(20000);
-                        mBluetoothAdapter.startLeScan(mLeScanCallback);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }).start();
+            Log.e(TAG, type + " = type");
         }
     };
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestPermission();
         initBlueTooth();
+
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_restaurant, container, false);
-
-        requestRestaurantData();
         initViews();
 
         return rootView;
     }
 
     private void initData(){
-        if(type == Const.AttractionType.ATTRACTION_TYPE){
+        if(type == 3){
             requestRestaurantData();
             if(restaurantListView.getVisibility() == View.GONE){
                 restaurantListView.setVisibility(View.VISIBLE);
@@ -141,9 +135,11 @@ public class RestaurantFragment extends Fragment {
 
     public void getAttractionType(iBeaconClass.iBeacon ibeacon) {
         if(ibeacon == null){
-            type = Const.AttractionType.UNKNOWN_TYPE;
+            type = Const.AttractionType.FOOD_TYPE;
+            Log.e("RESTAURANT", "============================ibeacon");
             return;
         }
+        Log.e("RESTAURANT", "============================ibeacon不为空");
         if ("fda50693-a4e2-4fb1-afcf-c6eb07647825".equalsIgnoreCase(ibeacon.proximityUuid) && Const.MajorID.ATTRACTION_MAJOR_ID == ibeacon.major    // 这里是对照UUID，major,minor作为模拟唯一的识别id
                 && 1001 == ibeacon.minor) {
             type = Const.AttractionType.ATTRACTION_TYPE;
@@ -172,6 +168,7 @@ public class RestaurantFragment extends Fragment {
             @Override
             public void onSuccess(final String responseStr) {
                 closeProgressDialog();
+                Log.e("Find", responseStr);
                 ServerResponse<List<RestaurantVo>> response = GsonUtil.formatJsonToRestaurantList(responseStr);
                 if(response == null){
                     onFailure(new OkHttpException(ResponseCode.NETWORK_ERROR.getCode(), ResponseCode.NETWORK_ERROR.getValue()));
@@ -209,6 +206,31 @@ public class RestaurantFragment extends Fragment {
         restaurantListView.setLayoutManager(manager);
         restaurantListView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+    }
+
+
+
+
+    private void requestPermission(){
+        if (!getActivity().getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)) {
+            Toast.makeText(getActivity(), "BLE is not supported", Toast.LENGTH_SHORT).show();
+        }
+        if (ContextCompat.checkSelfPermission(getActivity(),
+                Manifest.permission.ACCESS_COARSE_LOCATION) != PERMISSION_GRANTED) {
+            //请求权限
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, PERMISSION_GRANTED);
+            //判断是否需要 向用户解释，为什么要申请该权限
+            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
+                    Manifest.permission.READ_CONTACTS)) {
+                Toast.makeText(getActivity(), "shouldShowRequestPermissionRationale", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[]
+            grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     @Override

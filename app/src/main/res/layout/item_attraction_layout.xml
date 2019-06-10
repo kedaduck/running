@@ -8,7 +8,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="70dp">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/item_attraction_img"
@@ -20,7 +20,7 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp">
 
             <TextView
@@ -34,11 +34,10 @@
             <TextView
                 android:id="@+id/item_attraction_text"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:textColor="@color/light_black"
-                android:text="ddsddsfsdds"
-                android:maxLines="1"
+                android:text="ddsddsfsddsafefeqfjeoiwfjewoifiwehfiwehfiwehfihweuifhweuhfweuifhuefhuefhueihfiewhfviwebffesfheuwivuiesvuisbdvubsdiuvbsdivbusdibvusdbvuisdbvsdbvsduivbsds"
                 android:ellipsize="end"/>
 
         </LinearLayout>

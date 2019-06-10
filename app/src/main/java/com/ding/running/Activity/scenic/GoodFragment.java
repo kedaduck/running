@@ -75,6 +75,7 @@ public class GoodFragment extends Fragment {
 
             final iBeaconClass.iBeacon ibeacon = iBeaconClass.fromScanData(device, rssi, scanRecord);
             getAttractionType(ibeacon);
+            mBluetoothAdapter.stopLeScan(mLeScanCallback);
             initData();
             Log.e(TAG, type + "type ============== ");
             new Thread(new Runnable() {
@@ -110,7 +111,7 @@ public class GoodFragment extends Fragment {
     }
 
     private void initData(){
-        if(type == Const.AttractionType.ATTRACTION_TYPE){
+        if(type == 4){
             requestAttractionData();
             if(goodListView.getVisibility() == View.GONE){
                 goodListView.setVisibility(View.VISIBLE);
@@ -142,7 +143,7 @@ public class GoodFragment extends Fragment {
 
     public void getAttractionType(iBeaconClass.iBeacon ibeacon) {
         if(ibeacon == null){
-            type = Const.AttractionType.UNKNOWN_TYPE;
+            type = Const.AttractionType.GOOD_TYPE;
             return;
         }
         if ("fda50693-a4e2-4fb1-afcf-c6eb07647825".equalsIgnoreCase(ibeacon.proximityUuid) && Const.MajorID.ATTRACTION_MAJOR_ID == ibeacon.major    // 这里是对照UUID，major,minor作为模拟唯一的识别id
@@ -172,6 +173,7 @@ public class GoodFragment extends Fragment {
             @Override
             public void onSuccess(final String responseStr) {
                 closeProgressDialog();
+                Log.e("Find", responseStr);
                 ServerResponse<List<GoodVo>> response = GsonUtil.formatJsonToGoodList(responseStr);
                 if(response == null){
                     onFailure(new OkHttpException(ResponseCode.NETWORK_ERROR.getCode(), ResponseCode.NETWORK_ERROR.getValue()));

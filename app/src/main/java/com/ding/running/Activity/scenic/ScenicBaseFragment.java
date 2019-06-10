@@ -1,5 +1,6 @@
 package com.ding.running.Activity.scenic;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -7,18 +8,18 @@ import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.ding.running.Common.Const;
 import com.ding.running.Common.iBeaconClass;
-import com.ding.running.R;
 
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static android.support.constraint.Constraints.TAG;
 
 /**
@@ -43,14 +44,7 @@ public class ScenicBaseFragment extends Fragment {
 
             final iBeaconClass.iBeacon ibeacon = iBeaconClass.fromScanData(device, rssi, scanRecord);
             getAttractionType(ibeacon);
-            Log.e(TAG, type + "type ============== ");
-            getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-
-
-                }
-            });
+            Log.e(TAG, type + " = type");
         }
     };
 
@@ -58,7 +52,9 @@ public class ScenicBaseFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestPermission();
         initBlueTooth();
+
     }
 
     public void initBlueTooth(){
@@ -113,4 +109,27 @@ public class ScenicBaseFragment extends Fragment {
             type = Const.AttractionType.UNKNOWN_TYPE;
         }
     }
+
+    private void requestPermission(){
+        if (!getActivity().getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)) {
+            Toast.makeText(getActivity(), "BLE is not supported", Toast.LENGTH_SHORT).show();
+        }
+        if (ContextCompat.checkSelfPermission(getActivity(),
+                Manifest.permission.ACCESS_COARSE_LOCATION) != PERMISSION_GRANTED) {
+            //请求权限
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, PERMISSION_GRANTED);
+            //判断是否需要 向用户解释，为什么要申请该权限
+            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
+                    Manifest.permission.READ_CONTACTS)) {
+                Toast.makeText(getActivity(), "shouldShowRequestPermissionRationale", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[]
+            grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
 }

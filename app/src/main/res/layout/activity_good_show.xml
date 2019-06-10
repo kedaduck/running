@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.scenic.GoodShowActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/good_show_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/gray"
+        app:navigationIcon="@drawable/back_icon">
+
+        <TextView
+            android:id="@+id/good_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="龙须面"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:gravity="center_vertical"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <ImageView
+        android:id="@+id/good_img"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:scaleType="fitXY"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_gray"/>
+
+
+    <TextView
+        android:id="@+id/good_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="百草味 原切牛肉条50g/袋 肉干肉脯休闲零食特产美食小吃"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:layout_margin="15dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_gray"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="价格"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:gravity="center_vertical"/>
+
+        <TextView
+            android:id="@+id/good_price_text"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textColor="@color/red"
+            android:text="￥18"
+            android:layout_marginEnd="20dp"
+            android:textSize="22sp"
+            android:gravity="center_vertical|right"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_gray"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <View
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/play_page"/>
+
+        <TextView
+            android:id="@+id/good_store_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="15dp"
+            android:text="百草味店"
+            android:gravity="center_vertical"
+            android:textSize="18sp"
+            android:textColor="@color/red"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_gray"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="20dp">
+
+        <TextView
+            android:id="@+id/total_price_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="￥0"
+            android:textSize="18sp"
+            android:gravity="center_vertical"/>
+
+        <ImageView
+            android:id="@+id/remove_item_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/remove_icon"
+            android:layout_marginStart="20dp"/>
+
+        <TextView
+            android:id="@+id/good_count_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:text="0"
+            android:layout_marginStart="15dp"/>
+
+        <ImageView
+            android:id="@+id/add_item_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/add_icon"
+            android:layout_marginStart="15dp"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/buy_good_btn"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:background="@color/play_page"
+            android:text="购买"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

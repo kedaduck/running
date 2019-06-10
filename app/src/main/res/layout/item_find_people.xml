@@ -38,21 +38,47 @@
             <TextView
                 android:id="@+id/item_find_people_detail"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:maxLines="6"
-                android:text="@string/title_mine"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:maxLines="4"
+                android:text="dedwedwedwebdiwewebcbweuibcwuebcuwebcuwbccbuweibcwebciwebccwecwecwecwe"
                 android:textColor="@color/light_black"
                 android:ellipsize="end"
-                android:textSize="18sp"/>
+                android:textSize="16sp"/>
 
-            <TextView
-                android:id="@+id/item_find_people_time"
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="2018-09-11 20:87"
-                android:gravity="end"
-                android:textColor="@color/light_black"
-                android:textSize="18sp"/>
+                android:layout_height="40dp"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    android:id="@+id/item_find_people_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="2018-09-11 20:87"
+                    android:gravity="bottom"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/light_black"
+                    android:textSize="13sp"
+                    />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"/>
+
+                <Button
+                    android:id="@+id/item_find_people_btn"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/have_find"
+                    android:background="@drawable/select_photo_btn_back"
+                    android:textColor="@color/white"/>
+
+            </LinearLayout>
+
+
         </LinearLayout>
 
     </LinearLayout>
